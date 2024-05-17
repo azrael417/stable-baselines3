@@ -221,6 +221,8 @@ class OnPolicyAlgorithm(BaseAlgorithm):
                         terminal_value = self.policy.predict_values(terminal_obs)[0]  # type: ignore[arg-type]
                     rewards[idx] += self.gamma * terminal_value
 
+            print("DEBUG", self._last_obs, actions, rewards, self._last_episode_starts, values, log_probs)
+                    
             rollout_buffer.add(
                 self._last_obs,  # type: ignore[arg-type]
                 actions,
