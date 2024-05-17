@@ -222,6 +222,7 @@ class OnPolicyAlgorithm(BaseAlgorithm):
                     rewards[idx] += self.gamma * terminal_value
 
             print("DEBUG", self._last_obs, actions, rewards, self._last_episode_starts, values, log_probs)
+            sys.exit(1)
                     
             rollout_buffer.add(
                 self._last_obs,  # type: ignore[arg-type]
