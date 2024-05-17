@@ -244,8 +244,6 @@ class OnPolicyAlgorithm(BaseAlgorithm):
 
         callback.on_rollout_end()
 
-        sys.exit(1)
-
         return True
 
     def train(self) -> None:
