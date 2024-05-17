@@ -221,8 +221,7 @@ class OnPolicyAlgorithm(BaseAlgorithm):
                         terminal_value = self.policy.predict_values(terminal_obs)[0]  # type: ignore[arg-type]
                     rewards[idx] += self.gamma * terminal_value
 
-            print("DEBUG", self._last_obs, actions, rewards, self._last_episode_starts, values, log_probs)
-            sys.exit(1)
+            print("DEBUG RB stats", np.mean(self._last_obs), actions, rewards, self._last_episode_starts, values, log_probs)
                     
             rollout_buffer.add(
                 self._last_obs,  # type: ignore[arg-type]
@@ -244,6 +243,8 @@ class OnPolicyAlgorithm(BaseAlgorithm):
         callback.update_locals(locals())
 
         callback.on_rollout_end()
+
+        sys.exit(1)
 
         return True
 
